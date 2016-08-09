@@ -99,7 +99,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
     private final class ChaseCameraRenderer extends AExampleRenderer {
 
         private Object3D mRaptor, mSphere;
-        private Object3D[] mCubes;
+//        private Object3D[] mCubes;
         private Object3D mRootCube;
         private double mTime;
         private PointLight mPointLight;
@@ -145,7 +145,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
 
             // -- create a bunch of cubes that will serve as orientation helpers
 
-            mCubes = new Object3D[30];
+//            mCubes = new Object3D[30];
 
             mRootCube = new Cube(1);
             Material rootCubeMaterial = new Material();
@@ -162,14 +162,16 @@ public class ChaseCameraFragment extends AExampleFragment implements
             // -- similar objects with the same material, optimize
             mRootCube.setRenderChildrenAsBatch(true);
             getCurrentScene().addChild(mRootCube);
-            mCubes[0] = mRootCube;
+//            mCubes[0] = mRootCube;
 
-            for (int i = 1; i < mCubes.length; ++i) {
+//            for (int i = 1; i < mCubes.length; ++i) {
+            for (int i = 1; i < 50; ++i) {
                 Object3D cube = mRootCube.clone(true);
                 cube.setY(-1f);
                 cube.setZ(i * 30);
                 mRootCube.addChild(cube);
-                mCubes[i] = cube;
+//                getCurrentScene().addChild(cube);
+//                mCubes[i] = cube;
             }
 
             // -- create a chase camera
@@ -203,7 +205,7 @@ public class ChaseCameraFragment extends AExampleFragment implements
             mSphere.setZ(mRaptor.getZ());
             mTime += 0.01;
 
-            if (mRootCube.getZ() - mRaptor.getZ() <= (30 * -6)) {
+            if (mRootCube.getZ() - mRaptor.getZ() <= (30 * -50)) {
                 mRootCube.setZ(mRaptor.getZ());
             }
 
